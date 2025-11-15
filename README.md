@@ -1,3 +1,38 @@
+AgriTrace DAO is a blockchain-based system that records agricultural crop batches on Algorand.
+It provides transparent and verifiable data for farmers, distributors, and consumers.
+
+Setup & Installation
+
+Clone the repository
+
+Install dependencies
+
+Start Algorand LocalNet
+
+Deploy the smart contract
+
+Run backend and frontend
+
+Smart Contract
+
+The smart contract stores batch details such as batch ID, farmer name, crop type, location, and harvest date.
+Code is available in /backend/contract/smart_contract.py.
+
+
+
+Architecture
+
+– Smart contract stores data on-chain
+– Backend connects to Algorand and runs LoRa verification
+– Frontend allows users to register and view batches
+
+LoRa Testing
+
+Transaction IDs were verified on LoRa App Lab to confirm on-chain data accuracy.
+
+Deployment
+
+Frontend deployment link will be added after hosting.
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.

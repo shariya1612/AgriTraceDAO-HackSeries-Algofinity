@@ -1,51 +1,150 @@
-AgriTrace DAO is a blockchain-based system that records agricultural crop batches on Algorand.
-It provides transparent and verifiable data for farmers, distributors, and consumers.
+# AgriTrace DAO
 
-Setup & Installation
+## 📄 Project Overview
 
-Clone the repository
+AgriTrace DAO is a blockchain-powered agricultural supply chain traceability platform built on Algorand. The project revolutionizes food traceability by creating transparent, verifiable records of every product's journey from farm to fork.
 
-Install dependencies
+**Key Features:**
+- 🌾 **Farmer Dashboard**: Register crops, upload certifications, and generate unique QR codes for product batches
+- 🔍 **Consumer Verification**: Scan QR codes to view complete product history, eco-ratings, and origin information
+- 🗳️ **DAO Governance**: Community-driven decision making for platform improvements and sustainability initiatives
+- 🎁 **Rewards System**: Earn ASA tokens for participating in the ecosystem and making sustainable choices
+- 🌱 **Carbon-Negative**: Built on Algorand's environmentally sustainable blockchain
 
-Start Algorand LocalNet
+**Purpose:**
+AgriTrace DAO empowers farmers with fair market access, protects consumers with product transparency, and promotes sustainable agriculture through decentralized governance. All product data is immutably stored on Algorand blockchain, ensuring complete traceability and trust.
 
-Deploy the smart contract
+---
 
-Run backend and frontend
+## ⚙️ Setup & Installation
 
-Smart Contract
+### Prerequisites
+- Node.js (v18 or higher)
+- Python 3.10+
+- AlgoKit CLI
+- Algorand wallet (Pera Wallet recommended)
 
-The smart contract stores batch details such as batch ID, farmer name, crop type, location, and harvest date.
-Code is available in /backend/contract/smart_contract.py.
+### Local Setup
 
+```bash
+# Clone the repository
+git clone https://github.com/shariya1612/AgriTraceDAO-HackSeries-Algofinity.git
+cd AgriTraceDAO-HackSeries-Algofinity
 
+# Install dependencies
+npm install
 
-Architecture
+# Set up environment variables
+cp .env.example .env.local
+# Add your contract app ID and other config
 
-– Smart contract stores data on-chain
-– Backend connects to Algorand and runs LoRa verification
-– Frontend allows users to register and view batches
+# Run development server
+npm run dev
 
-LoRa Testing
+# Build for production
+npm run build
+```
 
-Transaction IDs were verified on LoRa App Lab to confirm on-chain data accuracy.
+---
 
-Deployment
+## 🔗 Deployed Contract & Asset Links
 
-Frontend deployment link will be added after hosting.
-# React + Vite
+### Smart Contracts on Algorand TestNet
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Main Application Contract:**
+- **App ID**: `748497472`
+- **Verification Link**: [View on Lora](https://lora.algokit.io/testnet/application/748497472)
+Check the box storages
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🧠 Architecture & Components
 
-## React Compiler
+### System Architecture
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```
+┌─────────────────┐         ┌──────────────────┐         ┌─────────────────┐
+│   Frontend      │         │    Backend       │         │   Algorand      │
+│   (Next.js)     │◄───────►│    (Python)      │◄───────►│   Blockchain    │
+│                 │         │                  │         │                 │
+│  - Farmer UI    │         │  - API Server    │         │  - Smart        │
+│  - Consumer UI  │         │  - Web3          │         │    Contracts    │
+│  - DAO Portal   │         │    Integration   │         │  - ASA Tokens   │
+└─────────────────┘         └──────────────────┘         └─────────────────┘
+```
 
-## Expanding the ESLint configuration
+### Core Components
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+#### 1. **Smart Contract Layer**
+- **Batch Registration Contract**: Stores crop batch details (batch ID, farmer info, crop type, location, certifications, harvest date)
+- **Governance Contract**: Manages DAO proposals and voting mechanisms
+- **Token Contract**: ASA tokens for rewards and incentives
+- **Verification Logic**: Ensures data integrity and authenticity
+
+#### 2. **Backend Service**
+- **Language**: Python with Flask/FastAPI
+- **Algorand SDK**: py-algorand-sdk for blockchain interactions
+- **Database**: PostgreSQL for off-chain indexing
+- **Functions**:
+  - Register farmers and batches
+  - Query blockchain for batch verification
+  - Handle wallet connections
+  - Manage DAO proposals and voting
+  - Process token rewards
+
+#### 3. **Frontend Application**
+- **Framework**: Next.js with TypeScript
+- **Styling**: Tailwind CSS
+- **Web3**: @algorandfoundation/algokit-utils, @perawallet/connect
+- **Features**:
+  - **Farmer Dashboard**: Multi-step registration form, batch management, QR code generation
+  - **Consumer Scanner**: QR code scanning, product history viewer, sustainability ratings
+  - **DAO Governance**: Proposal listing, voting interface, member statistics
+  - **Wallet Integration**: Pera Wallet connect/disconnect
+
+#### 4. **Data Flow**
+1. Farmer registers batch → Backend validates → Smart contract stores on-chain → QR code generated
+2. Consumer scans QR → Backend queries blockchain → Display verified product data
+3. Community member votes → Frontend signs transaction → Governance contract updates vote count
+
+---
+
+## 🌐 Deployed Application
+
+**Live Frontend**: [https://agritrace-wheat.vercel.app/](https://agritrace-wheat.vercel.app/)
+
+**Available Pages:**
+- `/` - Home page with project overview
+- `/farmers` - Farmer registration and dashboard
+- `/consumers` - Product verification scanner
+- `/dao` - Governance portal with active proposals
+- `/about` - Mission, values, and technology information
+
+---
+
+## 🚀 Key Technologies
+
+- **Blockchain**: Algorand (TestNet)
+- **Smart Contracts**: PyTeal / Python
+- **Frontend**: Next.js 14, React, TypeScript, Tailwind CSS
+- **Backend**: Python, Flask/FastAPI
+- **Web3**: AlgoKit, Pera Wallet SDK
+- **Deployment**: Vercel (Frontend), AWS/Railway (Backend)
+- **Tools**: AlgoKit CLI, Lora Explorer
+
+---
+
+## 📊 Project Status
+
+✅ Smart contracts deployed on Algorand TestNet  
+✅ Frontend deployed and functional  
+✅ Wallet integration working  
+✅ DAO governance system implemented  
+✅ QR code generation and scanning  
+🔄 Backend API optimization in progress  
+🔄 Mobile responsive improvements  
+📋 Future: Mainnet deployment, mobile app, advanced analytics  
+
+---
+
+**Built for Algorand Hackathon Series - Algofinity** 🌟
